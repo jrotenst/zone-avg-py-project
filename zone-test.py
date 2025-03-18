@@ -65,7 +65,10 @@ def get_avg_price(row):
     matching_listings.sort(key=lambda listing: listing["price"])
     cheapest_listings = matching_listings[:count]
 
-    price_strings = ", ".join([str(listing['price']) for listing in cheapest_listings])
+    listing_sections = ", ".join([listing["section"] for listing in cheapest_listings])
+    print(f"Matching listings for row {name}: \n{listing_sections}")
+
+    price_strings = ", ".join([str(listing["price"]) for listing in cheapest_listings])
     print(f"Cheapest listings for row {name}: \n{price_strings}")
 
     # Return sum of all prices divided by count, rounded down to 2 decimals
